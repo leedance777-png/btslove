@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTS LIVE EXPERIENCE 💜</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-bar">
+      <label class="language-picker">
+        <span class="sr-only" data-i18n="languageLabel">언어 선택</span>
+        <select id="languageSelect" aria-label="Language selector"></select>
+      </label>
+    </header>
+
+    <main class="experience-card">
+      <p class="eyebrow" data-i18n="eyebrow">전 세계 ARMY와 함께</p>
+      <h1 class="title" data-i18n="title">BTS LIVE EXPERIENCE 💜</h1>
+      <p class="subtitle" data-i18n="subtitle">하나의 무대, 하나의 함성, 하나의 마음</p>
+
+      <section class="stats-panel" aria-live="polite">
+        <span class="stats-label" data-i18n="participants">현재 참여자</span>
+        <strong class="stats-value" id="participantCount">12,907,614</strong>
+      </section>
+
+      <section class="reaction-grid" aria-label="Concert reactions">
+        <button type="button" class="reaction-button reaction-love" data-i18n="love">💜 사랑해</button>
+        <button type="button" class="reaction-button reaction-emotion" data-i18n="emotion">😭 감동</button>
+        <button type="button" class="reaction-button reaction-fire" data-i18n="fire">🔥 미쳤다</button>
+        <button type="button" class="reaction-button reaction-united" data-i18n="united">💜 ARMY 하나됨</button>
+      </section>
+
+      <section class="message-panel">
+        <p class="message-label" data-i18n="messageLabel">공연 메시지</p>
+        <p class="message" data-i18n="message">우리는 하나다. BTS &amp; ARMY 💜</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
