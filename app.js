@@ -290,6 +290,10 @@ const translations = {
 
 const languageSelect = document.querySelector("#languageSelect");
 const translatableNodes = document.querySelectorAll("[data-i18n]");
+const reactionButtons = document.querySelectorAll(".reaction-button");
+const participantCountNode = document.querySelector("#participantCount");
+let participantCount = 0;
+let currentLanguage = defaultLanguage;
 
 function buildLanguageOptions() {
   const optionsMarkup = Object.keys(translations)
@@ -302,6 +306,14 @@ function buildLanguageOptions() {
 function updateSelectLabel(text) {
   languageSelect.setAttribute("aria-label", text);
   languageSelect.title = text;
+}
+
+function formatParticipantCount(value, lang) {
+  return new Intl.NumberFormat(lang).format(value);
+}
+
+function renderParticipantCount() {
+  participantCountNode.textContent = formatParticipantCount(participantCount, currentLanguage);
 }
 
 function applyTextContent(dictionary) {
@@ -328,6 +340,8 @@ function setLanguage(lang) {
     document.documentElement.dir = rtlLanguages.has(normalizedLang) ? "rtl" : "ltr";
     document.title = dictionary.title;
     languageSelect.value = normalizedLang;
+    currentLanguage = normalizedLang;
+    renderParticipantCount();
     localStorage.setItem(storageKey, normalizedLang);
 
     window.setTimeout(() => {
@@ -348,6 +362,18 @@ function getInitialLanguage() {
 buildLanguageOptions();
 languageSelect.addEventListener("change", (event) => {
   setLanguage(event.target.value);
+});
+
+reactionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    participantCount += 1;
+    renderParticipantCount();
+    button.classList.add("is-active");
+
+    window.setTimeout(() => {
+      button.classList.remove("is-active");
+    }, 140);
+  });
 });
 
 setLanguage(getInitialLanguage());

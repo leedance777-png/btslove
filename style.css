@@ -222,6 +222,11 @@ body.is-switching .experience-card {
   outline: none;
 }
 
+.reaction-button.is-active {
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 0 10px 22px rgba(124, 87, 187, 0.14);
+}
+
 .reaction-love {
   background: linear-gradient(135deg, rgba(255, 203, 225, 0.95), rgba(255, 255, 255, 0.96));
 }
